@@ -6,7 +6,7 @@ WatchUp je jednostavna Spring Boot web aplikacija za upravljanje inventurom i sk
 ##  Značajke aplikacije
 
 - **Početna stranica**: Kratki opis i brza poveznicama za navigaciju
-- **Pregled inventure **: Tablični prikaz svih satova iz baze s automatskim izračunom ukupne količine komada na skladištu.
+- **Pregled inventure**: Tablični prikaz svih satova iz baze s automatskim izračunom ukupne količine komada na skladištu.
 - **Pretraga**: Brzo filtriranje satova prema modelu ili nazivu brenda (sustav ignorira velika/mala slova).
 - **Detalji zapisa**: Pregled svih informacija o pojedinom satu, uključujući i državu podrijetla brenda.
 - **CRUD upravljanje**: Potpuna podrška za dodavanje novih artikala te uređivanje postojećih podataka.
@@ -16,9 +16,9 @@ WatchUp je jednostavna Spring Boot web aplikacija za upravljanje inventurom i sk
 ## Pokretanje
 
 - **Preuzmite** .zip datoteku projekta i raspakirajte je 
--**Otvorite** dobivenu mapu u svom razvojnom okruženju (IntelliJ IDEA,VS Code..)
--**Pokrenite aplikaciju** kroz IDE desnim klikom na klasu WatchUpApplication.java -> Run As -> Spring Boot App.
--**Otvorite web preglednik** i idite na adresu: http://localhost:8080
+- **Otvorite** dobivenu mapu u svom razvojnom okruženju (IntelliJ IDEA,VS Code..)
+- **Pokrenite aplikaciju** kroz IDE desnim klikom na klasu WatchUpApplication.java -> Run As -> Spring Boot App.
+- **Otvorite web preglednik** i idite na adresu: http://localhost:8080
 
 
 
