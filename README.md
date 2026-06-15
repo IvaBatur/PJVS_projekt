@@ -22,7 +22,7 @@ WatchUp je jednostavna Spring Boot web aplikacija za upravljanje inventurom i sk
 
 
 
-
+##
 - Studentica: Iva Batur
 
 - Kolegij: Programiranje na Java virtualnom stroju 
