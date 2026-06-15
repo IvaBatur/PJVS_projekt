@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>WatchUp | Inventura</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+            background-image: url('https://img.freepik.com/premium-photo/close-up-black-clock-face-with-number-8-it_1013369-49852.jpg?semt=ais_hybrid&w=740&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        nav.navbar.glass-nav {
+            background-color: rgba(15, 15, 15, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1050;
+            border-radius: 12px;
+            margin: 15px auto 0 auto;
+            max-width: 1320px;
+            width: calc(100% - 24px);
+            padding: 12px 25px;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #ffffff;
+            letter-spacing: 1px;
+            font-size: 26px;
+            font-family: cursive;
+        }
+
+        .main-card {
+            background-color: rgba(255, 255, 255, 0.96);
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-top: 25px;
+            padding: 25px;
+        }
+
+        .action-buttons .btn {
+            margin-right: 5px;
+            border-radius: 6px;
+        }
+
+
+        .btn-info { color: white; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg glass-nav sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"> WATCHUP</a> 
+        
+        <form class="d-flex" action="/satovi" method="get">
+            <input class="form-control me-2" type="search" name="query" placeholder="Pretraži..." style="border-radius: 10px; background: rgba(255,255,255,0.8);">
+            <button class="btn btn-outline-light" type="submit" style="border-radius: 10px;">Traži</button>
+        </form>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="card main-card">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="m-0">Popis satova</h2>
+            <a href="/dodaj" class="btn btn-success px-4">Dodaj novi sat</a>
+        </div>
+        
+        <div th:if="${upozorenje}" class="alert alert-warning alert-dismissible fade show text-center rounded-3 shadow-sm" role="alert">
+    <strong th:text="${upozorenje}"></strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+        <div th:if="${poruka}" class="alert alert-success alert-dismissible fade show text-center rounded-3 shadow-sm" role="alert">
+    <strong th:text="${poruka}"></strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+        <table class="table table-hover align-middle">
+            <thead class="custom-header">
+                <tr>
+                    <th>Brend</th>
+                    <th>Model</th>
+                    <th>Cijena</th>
+                    <th>Količina</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="sat : ${satovi}">
+                    <td th:text="${sat.brand?.naziv}"></td>
+                    <td th:text="${sat.model}" class="fw-bold text-primary"></td>
+                    <td th:text="${sat.cijena + ' €'}"></td>
+                    <td><span class="badge bg-secondary" th:text="${sat.kolicina}"></span></td>
+                    <td class="text-center">
+                        <div class="action-buttons">
+                            <a th:href="@{/detalji/{id}(id=${sat.id})}" class="btn btn-sm btn-info">Info</a>
+                            <a th:href="@{/uredi/{id}(id=${sat.id})}" class="btn btn-sm btn-warning">Uredi</a>
+                            <a href="#" th:onclick="'confirmDelete(event, \'/obrisi/' + ${sat.id} + '\')'" class="btn btn-sm btn-danger">Obriši</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="total-row">
+    <td colspan="3" class="text-end py-3">Ukupno komada na skladištu:</td>
+    <td colspan="2">
+        <span class="badge bg-primary fs-6 px-3" th:text="${ukupno}">0</span>
+    </td>
+</tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+function confirmDelete(event, url) {
+    event.preventDefault();
+    Swal.fire({
+        title: 'Brisanje sata',
+        text: "Želite li trajno ukloniti ovaj sat?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Da, obriši!',
+        cancelButtonText: 'Odustani'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = url;
+        }
+    })
+}
+</script>
+
+</body>
+</html>

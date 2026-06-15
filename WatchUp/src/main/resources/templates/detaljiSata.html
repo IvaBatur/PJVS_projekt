@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>WatchUp | Detalji</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0" th:text="${sat.brand.naziv} + ' ' + ${sat.model}">Naziv sata</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Brend:</strong> <span th:text="${sat.brand.naziv}"></span></li>
+                        <li class="list-group-item"><strong>Model:</strong> <span th:text="${sat.model}"></span></li>
+                        <li class="list-group-item"><strong>Cijena:</strong> <span th:text="${sat.cijena}"></span> €</li>
+                        <li class="list-group-item"><strong>Količina na skladištu:</strong> <span th:text="${sat.kolicina}"></span> kom</li>
+                        <li class="list-group-item"><strong>Zemlja podrijetla:</strong> <span th:text="${sat.brand.drzavaPodrijetla}"></span></li>
+                    </ul>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <a href="/" class="btn btn-secondary">Natrag na popis</a>
+                    <a th:href="@{/uredi/{id}(id=${sat.id})}" class="btn btn-warning">Uredi podatke</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<style>
+    body {
+        background-image: url('https://img.freepik.com/premium-photo/close-up-black-clock-face-with-number-8-it_1013369-49852.jpg?semt=ais_hybrid&w=740&q=80');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        min-height: 100vh;
+    }
+    .table-container, .container {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    .card {
+        background-color: rgba(255, 255, 255, 0.92);
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+        padding: 20px;
+    }
+    .table {
+        background-color: white !important;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .navbar {
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .btn {
+        border-radius: 8px;
+        font-weight: 500;
+    }
+    .list-group-item {
+        background-color: transparent !important;
+    }
+</style>
+</html>
