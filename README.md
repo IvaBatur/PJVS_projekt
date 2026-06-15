@@ -23,9 +23,12 @@ WatchUp je jednostavna Spring Boot web aplikacija za upravljanje inventurom i sk
 
 
 
-Studentica: Iva Batur 
-Kolegij: Programiranje na Java virtualnom stroju 
-Mentor: dr. sc. Romeo Šajina
-Fakultet Informatike u Puli, 2026.
+- Studentica: Iva Batur
+
+- Kolegij: Programiranje na Java virtualnom stroju 
+
+- Mentor: dr. sc. Romeo Šajina
+  
+- Fakultet Informatike u Puli, 2026.
 
 
